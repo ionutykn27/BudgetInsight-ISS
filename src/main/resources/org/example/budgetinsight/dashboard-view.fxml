@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.budgetinsight.DashboardController"
+            stylesheets="@styles.css"
+            prefWidth="1200.0" prefHeight="750.0">
+
+    <left>
+        <VBox prefWidth="220.0" styleClass="sidebar">
+            <VBox styleClass="sidebar-header" spacing="2.0">
+                <Label text="Budget" styleClass="app-name"/>
+                <Label text="Insight" styleClass="app-name-accent"/>
+            </VBox>
+            <Region prefHeight="1.0" maxWidth="Infinity" styleClass="divider"/>
+            <VBox styleClass="sidebar-nav" spacing="4.0">
+                <Label text="NAVIGATION" styleClass="nav-label"/>
+                <Button text="Dashboard" maxWidth="Infinity" styleClass="nav-btn-active"/>
+                <Button text="Expenses"  maxWidth="Infinity" styleClass="nav-btn"/>
+                <Button text="Reports"   maxWidth="Infinity" styleClass="nav-btn"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="content-area">
+
+            <HBox alignment="CENTER_LEFT" prefHeight="64.0" styleClass="topbar">
+                <Label text="Dashboard" styleClass="topbar-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="IC" styleClass="profile-btn"/>
+            </HBox>
+
+            <VBox VBox.vgrow="ALWAYS" styleClass="content-padding" spacing="20.0">
+
+                    <Label text="Current Month  —  March 2026" styleClass="text-muted"/>
+
+                    <HBox spacing="16.0">
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
+                            <Label text="INCOME"          styleClass="card-label"/>
+                            <Label text="4,000 Lei"       styleClass="card-value, text-green"/>
+                            <Label text="Monthly income"  styleClass="card-subtitle"/>
+                        </VBox>
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
+                            <Label text="EXPENSES"        styleClass="card-label"/>
+                            <Label text="2,340 Lei"       styleClass="card-value, text-red"/>
+                            <Label text="This month"      styleClass="card-subtitle"/>
+                        </VBox>
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
+                            <Label text="SAVINGS"         styleClass="card-label"/>
+                            <Label text="1,660 Lei"       styleClass="card-value, text-blue"/>
+                            <Label text="Income - Expenses" styleClass="card-subtitle"/>
+                        </VBox>
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
+                            <Label text="SAVED"           styleClass="card-label"/>
+                            <Label text="41.5%"           styleClass="card-value, text-purple"/>
+                            <Label text="Of monthly income" styleClass="card-subtitle"/>
+                        </VBox>
+                    </HBox>
+
+                    <VBox spacing="12.0" styleClass="card">
+                        <HBox>
+                            <Label text="Budget Usage" styleClass="section-title"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="2,340 / 4,000 Lei   (58.5% used)" styleClass="text-muted"/>
+                        </HBox>
+                        <ProgressBar progress="0.585" maxWidth="Infinity" prefHeight="10.0"/>
+                        <Label text="Remaining this month: 1,660 Lei" styleClass="text-small-muted, text-green"/>
+                    </VBox>
+
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

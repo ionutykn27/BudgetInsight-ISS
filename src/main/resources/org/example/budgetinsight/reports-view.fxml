@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.budgetinsight.ReportsController"
+            stylesheets="@styles.css"
+            prefWidth="1200.0" prefHeight="750.0">
+
+    <left>
+        <VBox prefWidth="220.0" styleClass="sidebar">
+            <VBox styleClass="sidebar-header" spacing="2.0">
+                <Label text="Budget" styleClass="app-name"/>
+                <Label text="Insight" styleClass="app-name-accent"/>
+            </VBox>
+            <Region prefHeight="1.0" maxWidth="Infinity" styleClass="divider"/>
+            <VBox styleClass="sidebar-nav" spacing="4.0">
+                <Label text="NAVIGATION" styleClass="nav-label"/>
+                <Button text="Dashboard" maxWidth="Infinity" styleClass="nav-btn"/>
+                <Button text="Expenses"  maxWidth="Infinity" styleClass="nav-btn"/>
+                <Button text="Reports"   maxWidth="Infinity" styleClass="nav-btn-active"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="content-area">
+
+            <HBox alignment="CENTER_LEFT" prefHeight="64.0" styleClass="topbar">
+                <Label text="Reports" styleClass="topbar-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="IC" styleClass="profile-btn"/>
+            </HBox>
+
+            <VBox VBox.vgrow="ALWAYS" styleClass="content-padding" spacing="20.0">
+
+                <!-- PERIOD SELECTOR -->
+                <HBox spacing="12.0" alignment="CENTER_LEFT" styleClass="filter-row">
+                    <Label text="From:" styleClass="text-muted"/>
+                    <DatePicker prefWidth="160.0"/>
+                    <Label text="To:" styleClass="text-muted"/>
+                    <DatePicker prefWidth="160.0"/>
+                    <Button text="Generate Report" styleClass="btn-primary"/>
+                </HBox>
+
+
+                <VBox VBox.vgrow="ALWAYS" styleClass="card">
+                    <Label text="Income vs Expenses" styleClass="section-title"/>
+                    <BarChart fx:id="incomeExpensesChart" VBox.vgrow="ALWAYS">
+                        <xAxis>
+                            <CategoryAxis label="Month"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Amount (Lei)" lowerBound="0" upperBound="5000" tickUnit="500"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+
+                <HBox spacing="16.0">
+                    <VBox spacing="4.0" HBox.hgrow="ALWAYS" styleClass="card-sm">
+                        <Label text="TOTAL INCOME"   styleClass="card-label"/>
+                        <Label text="12,000 Lei"     styleClass="card-value, text-green"/>
+                    </VBox>
+                    <VBox spacing="4.0" HBox.hgrow="ALWAYS" styleClass="card-sm">
+                        <Label text="TOTAL EXPENSES" styleClass="card-label"/>
+                        <Label text="7,090 Lei"      styleClass="card-value, text-red"/>
+                    </VBox>
+                    <VBox spacing="4.0" HBox.hgrow="ALWAYS" styleClass="card-sm">
+                        <Label text="TOTAL SAVINGS"  styleClass="card-label"/>
+                        <Label text="4,910 Lei"      styleClass="card-value, text-blue"/>
+                    </VBox>
+                    <VBox spacing="4.0" HBox.hgrow="ALWAYS" styleClass="card-sm">
+                        <Label text="AVG SAVINGS %"  styleClass="card-label"/>
+                        <Label text="40.9%"          styleClass="card-value, text-purple"/>
+                    </VBox>
+                </HBox>
+
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
