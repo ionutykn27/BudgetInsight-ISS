@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -22,9 +24,9 @@
             <Region prefHeight="1.0" maxWidth="Infinity" styleClass="divider"/>
             <VBox styleClass="sidebar-nav" spacing="4.0">
                 <Label text="NAVIGATION" styleClass="nav-label"/>
-                <Button text="Dashboard" maxWidth="Infinity" styleClass="nav-btn-active"/>
-                <Button text="Expenses"  maxWidth="Infinity" styleClass="nav-btn"/>
-                <Button text="Reports"   maxWidth="Infinity" styleClass="nav-btn"/>
+                <Button text="Dashboard" maxWidth="Infinity" styleClass="nav-btn-active" onAction="#onNavDashboard"/>
+                <Button text="Expenses"  maxWidth="Infinity" styleClass="nav-btn"        onAction="#onNavExpenses"/>
+                <Button text="Reports"   maxWidth="Infinity" styleClass="nav-btn"        onAction="#onNavReports"/>
             </VBox>
         </VBox>
     </left>
@@ -35,45 +37,56 @@
             <HBox alignment="CENTER_LEFT" prefHeight="64.0" styleClass="topbar">
                 <Label text="Dashboard" styleClass="topbar-title"/>
                 <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ Adauga cheltuiala" styleClass="btn-primary" onAction="#onAddExpense"/>
+                <Region prefWidth="12.0"/>
                 <Button text="IC" styleClass="profile-btn"/>
             </HBox>
 
             <VBox VBox.vgrow="ALWAYS" styleClass="content-padding" spacing="20.0">
 
-                    <Label text="Current Month  —  March 2026" styleClass="text-muted"/>
-
-                    <HBox spacing="16.0">
-                        <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
-                            <Label text="INCOME"          styleClass="card-label"/>
-                            <Label text="4,000 Lei"       styleClass="card-value, text-green"/>
-                            <Label text="Monthly income"  styleClass="card-subtitle"/>
-                        </VBox>
-                        <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
-                            <Label text="EXPENSES"        styleClass="card-label"/>
-                            <Label text="2,340 Lei"       styleClass="card-value, text-red"/>
-                            <Label text="This month"      styleClass="card-subtitle"/>
-                        </VBox>
-                        <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
-                            <Label text="SAVINGS"         styleClass="card-label"/>
-                            <Label text="1,660 Lei"       styleClass="card-value, text-blue"/>
-                            <Label text="Income - Expenses" styleClass="card-subtitle"/>
-                        </VBox>
-                        <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
-                            <Label text="SAVED"           styleClass="card-label"/>
-                            <Label text="41.5%"           styleClass="card-value, text-purple"/>
-                            <Label text="Of monthly income" styleClass="card-subtitle"/>
-                        </VBox>
-                    </HBox>
-
-                    <VBox spacing="12.0" styleClass="card">
-                        <HBox>
-                            <Label text="Budget Usage" styleClass="section-title"/>
-                            <Region HBox.hgrow="ALWAYS"/>
-                            <Label text="2,340 / 4,000 Lei   (58.5% used)" styleClass="text-muted"/>
-                        </HBox>
-                        <ProgressBar progress="0.585" maxWidth="Infinity" prefHeight="10.0"/>
-                        <Label text="Remaining this month: 1,660 Lei" styleClass="text-small-muted, text-green"/>
+                <HBox spacing="16.0">
+                    <!-- Venit lunar static (se va actualiza in iteratia 2 cu Profile) -->
+                    <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
+                        <Label text="INCOME"       styleClass="card-label"/>
+                        <Label text="4,000 Lei"    styleClass="card-value, text-green"/>
+                        <Label text="Venit lunar"  styleClass="card-subtitle"/>
                     </VBox>
+
+                    <!-- Cheltuieli luna curenta - dinamic din DB -->
+                    <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
+                        <Label text="CHELTUIELI"    styleClass="card-label"/>
+                        <Label fx:id="monthExpensesLabel" text="—" styleClass="card-value, text-red"/>
+                        <Label text="Luna curenta"  styleClass="card-subtitle"/>
+                    </VBox>
+
+                    <!-- Cheltuieli azi - dinamic din DB -->
+                    <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card">
+                        <Label text="AZI"           styleClass="card-label"/>
+                        <Label fx:id="todayTotalLabel" text="—" styleClass="card-value, text-blue"/>
+                        <Label fx:id="todayCountLabel" text="0 tranzactii" styleClass="card-subtitle"/>
+                    </VBox>
+
+                    <!-- Buton rapid adaugare -->
+                    <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="card" alignment="CENTER">
+                        <Label text="ACCES RAPID"   styleClass="card-label"/>
+                        <Button text="+ Cheltuiala noua" styleClass="btn-primary"
+                                maxWidth="Infinity" onAction="#onAddExpense"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Grafic cheltuieli zilnice ultimele 7 zile -->
+                <VBox VBox.vgrow="ALWAYS" styleClass="card" spacing="12.0">
+                    <Label text="Cheltuieli zilnice — ultimele 7 zile" styleClass="section-title"/>
+                    <BarChart fx:id="dailyChart" VBox.vgrow="ALWAYS"
+                              animated="false" legendVisible="false">
+                        <xAxis>
+                            <CategoryAxis fx:id="xAxis"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis fx:id="yAxis" label="Lei" minorTickVisible="false"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
 
             </VBox>
         </VBox>

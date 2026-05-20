@@ -1,7 +1,42 @@
 /* =============================================
-   BUDGETINSIGHT - DARK THEME
-   Base: #0d0d0d | Green: income | Red: expenses | Blue: UI accent
+   BUDGETINSIGHT - AtlantaFX NordDark overrides
    ============================================= */
+
+/* ===== CSS VARIABLES — suprascrie paleta AtlantaFX ===== */
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+
+    /* Fundaluri */
+    -color-bg-default:    #0d0d0d;
+    -color-bg-subtle:     #161616;
+    -color-bg-inset:      #111111;
+    -color-bg-overlay:    #1a1a1a;
+
+    /* Borduri */
+    -color-border-default: #2d2d2d;
+    -color-border-muted:   #1e1e1e;
+    -color-border-subtle:  #1a1a1a;
+
+    /* Text */
+    -color-fg-default:  #f1f5f9;
+    -color-fg-muted:    #94a3b8;
+    -color-fg-subtle:   #64748b;
+    -color-fg-on-emphasis: #ffffff;
+
+    /* Accent (verde) */
+    -color-accent-fg:        #4ade80;
+    -color-accent-emphasis:  #16a34a;
+    -color-accent-muted:     rgba(74, 222, 128, 0.15);
+    -color-accent-subtle:    rgba(74, 222, 128, 0.08);
+
+    /* Stari semantice */
+    -color-success-fg:   #4ade80;
+    -color-danger-fg:    #f87171;
+    -color-danger-emphasis: #dc2626;
+    -color-warning-fg:   #fb923c;
+    -color-neutral-emphasis: #334155;
+}
 
 /* ===== SIDEBAR ===== */
 .sidebar {
@@ -12,72 +47,89 @@
 }
 .app-name {
     -fx-text-fill: #f1f5f9;
-    -fx-font-size: 22;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
 }
 .app-name-accent {
     -fx-text-fill: #4ade80;
-    -fx-font-size: 22;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
 }
 .divider {
-    -fx-background-color: #1f1f1f;
+    -fx-background-color: #262626;
+    -fx-min-height: 1;
+    -fx-max-height: 1;
 }
 .sidebar-nav {
     -fx-padding: 20 12 20 12;
 }
 .nav-label {
-    -fx-text-fill: #374151;
-    -fx-font-size: 10;
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
     -fx-font-weight: bold;
     -fx-padding: 4 8 8 8;
 }
 .nav-btn {
     -fx-background-color: transparent;
-    -fx-text-fill: #6b7280;
-    -fx-font-size: 13;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
     -fx-padding: 11 16;
     -fx-background-radius: 8;
     -fx-border-color: transparent;
     -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-effect: null;
+}
+.nav-btn:hover {
+    -fx-background-color: #141414;
+    -fx-text-fill: #cbd5e1;
 }
 .nav-btn-active {
     -fx-background-color: #1a1a1a;
     -fx-text-fill: #f1f5f9;
-    -fx-font-size: 13;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
     -fx-padding: 11 16 11 13;
     -fx-background-radius: 8;
     -fx-border-color: transparent transparent transparent #4ade80;
     -fx-border-width: 0 0 0 3;
     -fx-border-radius: 8;
     -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-effect: null;
 }
 
 /* ===== TOPBAR ===== */
 .topbar {
     -fx-background-color: #0d0d0d;
     -fx-padding: 0 24;
-    -fx-border-color: transparent transparent #1f1f1f transparent;
+    -fx-border-color: transparent transparent #262626 transparent;
     -fx-border-width: 0 0 1 0;
 }
 .topbar-title {
-    -fx-font-size: 20;
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
-    -fx-text-fill: #f1f5f9;
+    -fx-text-fill: #f8fafc;
 }
 .profile-btn {
-    -fx-background-color: #1a1a1a;
+    -fx-background-color: #1e293b;
     -fx-text-fill: #4ade80;
     -fx-font-weight: bold;
-    -fx-font-size: 13;
+    -fx-font-size: 13px;
     -fx-background-radius: 20;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #334155;
     -fx-border-width: 1;
     -fx-border-radius: 20;
     -fx-min-width: 40;
     -fx-min-height: 40;
     -fx-max-width: 40;
     -fx-max-height: 40;
+    -fx-cursor: hand;
+    -fx-effect: null;
+}
+.profile-btn:hover {
+    -fx-background-color: #273449;
+    -fx-effect: null;
 }
 
 /* ===== CONTENT ===== */
@@ -89,7 +141,6 @@
     -fx-background-color: #0d0d0d;
 }
 .content-scroll {
-    -fx-background: #0d0d0d;
     -fx-background-color: #0d0d0d;
 }
 .content-scroll > .viewport {
@@ -98,116 +149,172 @@
 
 /* ===== CARDS ===== */
 .card {
-    -fx-background-color: #1a1a1a;
+    -fx-background-color: #161616;
     -fx-background-radius: 12;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #262626;
     -fx-border-width: 1;
     -fx-border-radius: 12;
     -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 14, 0, 0, 4);
 }
 .card-sm {
-    -fx-background-color: #1a1a1a;
+    -fx-background-color: #161616;
     -fx-background-radius: 12;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #262626;
     -fx-border-width: 1;
     -fx-border-radius: 12;
     -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 14, 0, 0, 4);
 }
 
 /* ===== TEXT ===== */
 .card-label {
-    -fx-text-fill: #4b5563;
-    -fx-font-size: 11;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 11px;
     -fx-font-weight: bold;
 }
 .card-value {
-    -fx-font-size: 26;
+    -fx-font-size: 26px;
     -fx-font-weight: bold;
+    -fx-text-fill: #f1f5f9;
 }
 .card-subtitle {
-    -fx-text-fill: #4b5563;
-    -fx-font-size: 12;
+    -fx-text-fill: #64748b;
+    -fx-font-size: 12px;
 }
 .section-title {
-    -fx-font-size: 15;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-text-fill: #f1f5f9;
 }
 .section-subtitle {
-    -fx-text-fill: #6b7280;
-    -fx-font-size: 12;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
 }
 .text-muted {
-    -fx-text-fill: #6b7280;
-    -fx-font-size: 13;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
 }
 .text-dark {
-    -fx-font-size: 18;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-text-fill: #f1f5f9;
 }
 .text-small-muted {
-    -fx-text-fill: #4b5563;
-    -fx-font-size: 12;
+    -fx-text-fill: #64748b;
+    -fx-font-size: 12px;
 }
 
 /* ===== CONTEXTUAL COLORS ===== */
-.text-green  { -fx-text-fill: #4ade80; }   /* Venit / Income */
-.text-red    { -fx-text-fill: #f87171; }   /* Cheltuieli / Expenses */
-.text-blue   { -fx-text-fill: #60a5fa; }   /* Rapoarte / Neutral */
-.text-purple { -fx-text-fill: #c084fc; }   /* Economii % */
-.text-orange { -fx-text-fill: #fb923c; }   /* rezervat daca e nevoie */
+.text-green  { -fx-text-fill: #4ade80; }
+.text-red    { -fx-text-fill: #f87171; }
+.text-blue   { -fx-text-fill: #60a5fa; }
+.text-purple { -fx-text-fill: #c084fc; }
+.text-orange { -fx-text-fill: #fb923c; }
 
-/* ===== BUTTONS ===== */
+/* ===== BUTTONS (clase custom peste AtlantaFX) ===== */
 .btn-primary {
     -fx-background-color: #2563eb;
     -fx-text-fill: white;
-    -fx-font-size: 13;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
     -fx-padding: 8 18;
     -fx-background-radius: 8;
     -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-effect: null;
+    -fx-cursor: hand;
+}
+.btn-primary:hover {
+    -fx-background-color: #1d4ed8;
+    -fx-effect: null;
+}
+.btn-primary:pressed {
+    -fx-background-color: #1e40af;
+    -fx-effect: null;
 }
 .btn-secondary {
-    -fx-background-color: #1f1f1f;
-    -fx-text-fill: #f1f5f9;
-    -fx-font-size: 13;
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 13px;
     -fx-padding: 8 18;
     -fx-background-radius: 8;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #334155;
     -fx-border-width: 1;
+    -fx-effect: null;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover {
+    -fx-background-color: #262626;
+    -fx-text-fill: #f8fafc;
+    -fx-effect: null;
+}
+.btn-secondary:pressed {
+    -fx-background-color: #111111;
+    -fx-effect: null;
 }
 .btn-danger {
     -fx-background-color: #1f0f0f;
     -fx-text-fill: #f87171;
-    -fx-font-size: 13;
+    -fx-font-size: 13px;
     -fx-padding: 8 18;
     -fx-background-radius: 8;
     -fx-border-color: #3f1f1f;
     -fx-border-width: 1;
+    -fx-effect: null;
+    -fx-cursor: hand;
+}
+.btn-danger:hover {
+    -fx-background-color: #2a1010;
+    -fx-border-color: #5a2020;
+    -fx-effect: null;
+}
+.btn-danger:pressed {
+    -fx-background-color: #150808;
+    -fx-effect: null;
 }
 .btn-success {
     -fx-background-color: #166534;
     -fx-text-fill: #4ade80;
-    -fx-font-size: 13;
+    -fx-font-size: 13px;
     -fx-padding: 7 16;
     -fx-background-radius: 6;
     -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-effect: null;
+    -fx-cursor: hand;
+}
+.btn-success:hover {
+    -fx-background-color: #15803d;
+    -fx-effect: null;
 }
 .btn-outline {
-    -fx-background-color: #1a1a1a;
-    -fx-text-fill: #6b7280;
-    -fx-font-size: 13;
+    -fx-background-color: #161616;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
     -fx-padding: 8 16;
     -fx-background-radius: 8;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #334155;
     -fx-border-width: 1;
+    -fx-effect: null;
+    -fx-cursor: hand;
+}
+.btn-outline:hover {
+    -fx-text-fill: #f1f5f9;
+    -fx-border-color: #475569;
+    -fx-background-color: #1e1e1e;
+    -fx-effect: null;
+}
+.btn-outline:pressed {
+    -fx-background-color: #111111;
+    -fx-effect: null;
 }
 
 /* ===== FORM / FILTERS ===== */
 .filter-row {
-    -fx-background-color: #1a1a1a;
+    -fx-background-color: #161616;
     -fx-background-radius: 12;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #262626;
     -fx-border-width: 1;
     -fx-border-radius: 12;
     -fx-padding: 16;
@@ -216,18 +323,23 @@
     -fx-background-color: #111111;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #334155;
     -fx-border-width: 1;
     -fx-padding: 7 12;
-    -fx-font-size: 13;
+    -fx-font-size: 13px;
     -fx-text-fill: #f1f5f9;
-    -fx-prompt-text-fill: #4b5563;
+    -fx-prompt-text-fill: #64748b;
+    -fx-effect: null;
+}
+.input-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-effect: null;
 }
 .inline-form {
     -fx-background-color: #141414;
     -fx-background-radius: 8;
     -fx-padding: 12;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #262626;
     -fx-border-width: 1;
     -fx-border-radius: 8;
 }
@@ -248,36 +360,63 @@
 /* ===== SCROLL PANE ===== */
 .scroll-pane {
     -fx-background-color: #0d0d0d;
+    -fx-background: #0d0d0d;
 }
 .scroll-pane > .viewport {
     -fx-background-color: #0d0d0d;
 }
 
-/* ===== TABLE ===== */
+/* ===== TABLE (ajustari layout peste AtlantaFX) ===== */
 .table-card {
-    -fx-background-color: #1a1a1a;
+    -fx-background-color: #161616;
     -fx-background-radius: 12;
-    -fx-border-color: #2a2a2a;
+    -fx-border-color: #262626;
     -fx-border-width: 1;
     -fx-border-radius: 12;
 }
 .table-view {
-    -fx-background-color: #1a1a1a;
-    -fx-border-color: transparent;
+    -fx-background-color: #161616;
 }
 .table-view .column-header-background {
-    -fx-background-color: #141414;
+    -fx-background-color: #111111;
 }
 .table-view .column-header {
-    -fx-background-color: #141414;
-    -fx-text-fill: #6b7280;
+    -fx-background-color: #111111;
 }
-.table-view .table-row-cell {
-    -fx-background-color: #1a1a1a;
-    -fx-text-fill: #f1f5f9;
-    -fx-border-color: transparent transparent #1f1f1f transparent;
-    -fx-border-width: 0 0 1 0;
+.table-view .column-header .label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
 }
-.table-view .table-row-cell:selected {
-    -fx-background-color: #1f2937;
+.table-view .filler {
+    -fx-background-color: #111111;
+}
+
+/* ===== CHARTS (ajustari peste AtlantaFX) ===== */
+.chart {
+    -fx-background-color: transparent;
+    -fx-padding: 8 0 0 0;
+}
+.chart-plot-background {
+    -fx-background-color: #111111;
+    -fx-background-radius: 6;
+}
+.default-color0.chart-bar { -fx-bar-fill: #2563eb; }
+.default-color1.chart-bar { -fx-bar-fill: #4ade80; }
+.default-color2.chart-bar { -fx-bar-fill: #f87171; }
+.default-color3.chart-bar { -fx-bar-fill: #c084fc; }
+.chart-legend {
+    -fx-background-color: transparent;
+}
+.chart-legend-item {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+}
+.chart-pie-label {
+    -fx-fill: #e2e8f0;
+    -fx-font-size: 11px;
+}
+.chart-pie-label-line {
+    -fx-stroke: #475569;
 }

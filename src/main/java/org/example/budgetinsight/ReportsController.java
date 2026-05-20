@@ -3,6 +3,7 @@ package org.example.budgetinsight;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import org.example.budgetinsight.util.SceneNavigator;
 
 public class ReportsController {
 
@@ -28,4 +29,8 @@ public class ReportsController {
 
         incomeExpensesChart.getData().addAll(incomeSeries, expensesSeries);
     }
+
+    @FXML private void onNavDashboard() { SceneNavigator.navigateTo("dashboard-view.fxml"); }
+    @FXML private void onNavExpenses()  { SceneNavigator.navigateTo("expenses-view.fxml"); }
+    @FXML private void onNavReports()   {}
 }

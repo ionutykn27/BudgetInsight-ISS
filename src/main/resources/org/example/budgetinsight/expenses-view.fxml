@@ -27,9 +27,9 @@
             <Region prefHeight="1.0" maxWidth="Infinity" styleClass="divider"/>
             <VBox styleClass="sidebar-nav" spacing="4.0">
                 <Label text="NAVIGATION" styleClass="nav-label"/>
-                <Button text="Dashboard" maxWidth="Infinity" styleClass="nav-btn"/>
-                <Button text="Expenses"  maxWidth="Infinity" styleClass="nav-btn-active"/>
-                <Button text="Reports"   maxWidth="Infinity" styleClass="nav-btn"/>
+                <Button text="Dashboard" maxWidth="Infinity" styleClass="nav-btn"        onAction="#onNavDashboard"/>
+                <Button text="Expenses"  maxWidth="Infinity" styleClass="nav-btn-active" onAction="#onNavExpenses"/>
+                <Button text="Reports"   maxWidth="Infinity" styleClass="nav-btn"        onAction="#onNavReports"/>
             </VBox>
         </VBox>
     </left>
@@ -46,43 +46,44 @@
             <VBox VBox.vgrow="ALWAYS" styleClass="content-padding" spacing="16.0">
 
                 <HBox spacing="12.0" alignment="CENTER_LEFT" styleClass="filter-row">
-                    <Label text="Min Amount:" styleClass="text-muted"/>
-                    <TextField promptText="0.00" prefWidth="90.0" styleClass="input-field"/>
-                    <Label text="From:" styleClass="text-muted"/>
-                    <DatePicker prefWidth="150.0"/>
-                    <Label text="To:" styleClass="text-muted"/>
-                    <DatePicker prefWidth="150.0"/>
-                    <Label text="Category:" styleClass="text-muted"/>
-                    <ComboBox fx:id="categoryFilter" prefWidth="150.0" promptText="All Categories"/>
-                    <Button text="Apply Filter" styleClass="btn-primary"/>
-                    <Button text="Clear"        styleClass="btn-outline"/>
+                    <Label text="Min:" styleClass="text-muted"/>
+                    <TextField fx:id="minAmountField" promptText="0.00" prefWidth="90.0" styleClass="input-field"/>
+                    <Label text="De la:" styleClass="text-muted"/>
+                    <DatePicker fx:id="fromDatePicker" prefWidth="145.0"/>
+                    <Label text="Pana la:" styleClass="text-muted"/>
+                    <DatePicker fx:id="toDatePicker" prefWidth="145.0"/>
+                    <Label text="Categorie:" styleClass="text-muted"/>
+                    <ComboBox fx:id="categoryFilter" prefWidth="155.0" promptText="Toate categoriile"/>
+                    <Button text="Aplica" styleClass="btn-primary" onAction="#onApplyFilter"/>
+                    <Button text="Sterge" styleClass="btn-outline" onAction="#onClearFilter"/>
                 </HBox>
 
                 <HBox spacing="16.0" VBox.vgrow="ALWAYS">
 
-                    <VBox prefWidth="380.0" styleClass="card">
-                        <Label text="Expenses by Category" styleClass="section-title"/>
+                    <VBox prefWidth="370.0" styleClass="card">
+                        <Label text="Cheltuieli pe categorii" styleClass="section-title"/>
                         <PieChart fx:id="categoryChart" VBox.vgrow="ALWAYS"/>
                     </VBox>
 
                     <VBox spacing="12.0" HBox.hgrow="ALWAYS">
                         <HBox spacing="8.0" alignment="CENTER_RIGHT">
-                            <Button text="+ Add Expense" styleClass="btn-primary"/>
-                            <Button text="Edit"           styleClass="btn-secondary"/>
-                            <Button text="Delete"         styleClass="btn-danger"/>
+                            <Button text="+ Adauga"  styleClass="btn-primary"   onAction="#onAddExpense"/>
+                            <Button text="Editeaza"  styleClass="btn-secondary" onAction="#onEditExpense"/>
+                            <Button text="Sterge"    styleClass="btn-danger"    onAction="#onDeleteExpense"/>
                         </HBox>
-                        <TableView VBox.vgrow="ALWAYS" styleClass="table-card">
+                        <TableView fx:id="expensesTable" VBox.vgrow="ALWAYS" styleClass="table-card">
                             <columns>
-                                <TableColumn text="Date"           prefWidth="110.0"/>
-                                <TableColumn text="Description"    prefWidth="220.0"/>
-                                <TableColumn text="Category"       prefWidth="130.0"/>
-                                <TableColumn text="Amount (Lei)"   prefWidth="130.0"/>
+                                <TableColumn fx:id="dateColumn"        text="Data"        prefWidth="110.0"/>
+                                <TableColumn fx:id="descriptionColumn" text="Descriere"   prefWidth="220.0"/>
+                                <TableColumn fx:id="categoryColumn"    text="Categorie"   prefWidth="130.0"/>
+                                <TableColumn fx:id="amountColumn"      text="Suma (Lei)"  prefWidth="130.0"/>
                             </columns>
                             <placeholder>
-                                <Label text="No expenses found." styleClass="text-muted"/>
+                                <Label text="Nu exista cheltuieli." styleClass="text-muted"/>
                             </placeholder>
                         </TableView>
                     </VBox>
+
                 </HBox>
             </VBox>
         </VBox>
