@@ -1,10 +1,13 @@
 package org.example.budgetinsight.service;
 
 import org.example.budgetinsight.model.Expense;
+import org.example.budgetinsight.model.ExpenseCategory;
 import org.example.budgetinsight.repository.ExpenseRepository;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExpenseService {
 
@@ -17,6 +20,18 @@ public class ExpenseService {
 
     public List<Expense> getAllExpenses() {
         return repository.findAll();
+    }
+
+    public List<Expense> filterExpenses(BigDecimal minAmount, BigDecimal maxAmount,
+                                        LocalDate from, LocalDate to,
+                                        ExpenseCategory category) {
+        return repository.findAll().stream()
+                .filter(e -> minAmount == null || e.getAmount().compareTo(minAmount) >= 0)
+                .filter(e -> maxAmount == null || e.getAmount().compareTo(maxAmount) <= 0)
+                .filter(e -> from == null || !e.getDate().isBefore(from))
+                .filter(e -> to   == null || !e.getDate().isAfter(to))
+                .filter(e -> category == null || e.getCategory() == category)
+                .collect(Collectors.toList());
     }
 
     public Expense updateExpense(Expense expense) {

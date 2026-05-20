@@ -1,6 +1,6 @@
 package org.example.budgetinsight;
 
-import atlantafx.base.theme.NordDark;
+import atlantafx.base.theme.PrimerDark;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.example.budgetinsight.service.ImportService;
@@ -11,7 +11,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) {
-        Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
+        Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
         SceneNavigator.setStage(stage);
         stage.setTitle("BudgetInsight");
 

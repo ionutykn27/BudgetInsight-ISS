@@ -24,10 +24,10 @@
             </VBox>
             <Region prefHeight="1.0" maxWidth="Infinity" styleClass="divider"/>
             <VBox styleClass="sidebar-nav" spacing="4.0">
-                <Label text="NAVIGATION" styleClass="nav-label"/>
-                <Button text="Dashboard" maxWidth="Infinity" styleClass="nav-btn"        onAction="#onNavDashboard"/>
-                <Button text="Expenses"  maxWidth="Infinity" styleClass="nav-btn"        onAction="#onNavExpenses"/>
-                <Button text="Reports"   maxWidth="Infinity" styleClass="nav-btn-active" onAction="#onNavReports"/>
+                <Label text="NAVIGARE" styleClass="nav-label"/>
+                <Button text="⬡  Dashboard"  maxWidth="Infinity" styleClass="nav-btn"        onAction="#onNavDashboard"/>
+                <Button text="↗  Cheltuieli" maxWidth="Infinity" styleClass="nav-btn"        onAction="#onNavExpenses"/>
+                <Button text="◫  Rapoarte"   maxWidth="Infinity" styleClass="nav-btn-active" onAction="#onNavReports"/>
             </VBox>
         </VBox>
     </left>
